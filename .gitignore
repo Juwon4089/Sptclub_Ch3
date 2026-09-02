@@ -1,0 +1,30 @@
+# Visual Studio / Rider
+.vs/
+.vsconfig
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+.idea/
+
+# Unreal generated/build folders
+Binaries/
+Intermediate/
+DerivedDataCache/
+Saved/
+Build/
+
+# Unreal generated files
+*.VC.db
+*.tps
+CrashReportClient/
+
+# Compiled source
+*.obj
+*.o
+*.pdb
+
+# Localization
+Content/Localization/*/*.bak
