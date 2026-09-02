@@ -50,8 +50,46 @@ ASptclub_Ch3Character::ASptclub_Ch3Character()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
+	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character)
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	MaxHealth = 100.0f;
+	CurrentHealth = MaxHealth;
+}
+
+void ASptclub_Ch3Character::BeginPlay()
+{
+	Super::BeginPlay();
+
+	CurrentHealth = MaxHealth;
+}
+
+float ASptclub_Ch3Character::GetHealth() const
+{
+	return CurrentHealth;
+}
+
+float ASptclub_Ch3Character::GetMaxHealth() const
+{
+	return MaxHealth;
+}
+
+void ASptclub_Ch3Character::AddHealth(float Amount)
+{
+	float NewHealth = CurrentHealth + Amount;
+
+	if (NewHealth > MaxHealth)
+	{
+		CurrentHealth = MaxHealth;
+	}
+	else if (NewHealth < 0.0f)
+	{
+		CurrentHealth = 0.0f;
+	}
+	else
+	{
+		CurrentHealth = NewHealth;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////

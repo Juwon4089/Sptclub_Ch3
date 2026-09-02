@@ -46,7 +46,25 @@ class ASptclub_Ch3Character : public ACharacter
 
 public:
 	ASptclub_Ch3Character();
-	
+
+	UFUNCTION(BlueprintPure)
+	float GetHealth() const;
+
+	UFUNCTION(BlueprintPure)
+	float GetMaxHealth() const;
+
+	UFUNCTION(BlueprintCallable)
+	void AddHealth(float Amount);
+
+protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Health)
+	float MaxHealth;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health)
+	float CurrentHealth;
+
+	virtual void BeginPlay() override;
 
 protected:
 
